@@ -5,12 +5,14 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule,  routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { AuthInterceptor } from './services/auth.interceptor'
+import { AuthInterceptor } from './services/auth.interceptor';
+import { MainComponent } from './components/main/main.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    MainComponent
   ],
   imports: [
     BrowserModule,
