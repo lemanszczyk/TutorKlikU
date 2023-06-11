@@ -1,4 +1,4 @@
-<table>
+<!-- <table>
   <thead>
     <th>Name</th>
   </thead>
@@ -7,4 +7,16 @@
       <td>{{ hero.name}}</td>
     </tr>
   </tbody>
-</table>
+</table> -->
+
+<div>
+  Name:
+  <input [(ngModel)]="user.UserName" placeholder="Name">
+</div>
+<div>
+  Password:
+  <input [(ngModel)]="user.Password" placeholder="Password" type="password">
+</div>
+<!-- <button (click)="register(user)">Register</button> -->
+<button (click)="login(user)">Login</button>
+<button (click)="getMe()">Get Me</button>
