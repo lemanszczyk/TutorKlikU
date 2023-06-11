@@ -11,25 +11,7 @@ import { User } from './models/userLogin';
 })
 export class AppComponent {
   title = 'TutorKlikUI';
-  heroes: SuperHero[] = [];
 
-  user = new User();
-  
-  constructor(private superHeroService: SuperHeroService, private authService: AuthService) {}
+  constructor() {}
 
-  getMe(){
-    this.superHeroService
-    .getSuperHeroes()
-    .subscribe((result: SuperHero[]) => (this.heroes = result));
-  }
-
-  register(user: User) {
-    this.authService.register(user).subscribe();
-  }
-
-  login(user: User) {
-    this.authService.login(user).subscribe((token: string) => {
-      localStorage.setItem('authToken', token);
-    });
-  }
 }
