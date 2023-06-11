@@ -10,6 +10,8 @@
 </table> -->
 
 <div>
+  <a routerLink="/login" routerLinkActive="">Login</a>
+  <a routerLink="/register" routerLinkActive="">Register</a>
   Name:
   <input [(ngModel)]="user.UserName" placeholder="Name">
 </div>
@@ -20,3 +22,4 @@
 <!-- <button (click)="register(user)">Register</button> -->
 <button (click)="login(user)">Login</button>
 <button (click)="getMe()">Get Me</button>
+<router-outlet></router-outlet>
