@@ -1,26 +1,57 @@
-body {
+html, body {
     margin: 0px !important;
     padding: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: #ececec;
+}
+input{
+	padding: 5px;
+	font-size: 27px;
+	border-width: 1px;
+	border-color: #CCCCCC;
+	background-color: #FFFFFF;
+	color: #000000;
+	border-style: solid;
+	border-radius: 21px;
+	box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+	text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+	height: 50px;
+	margin: 5px;
+}
+input:focus {
+	outline:none;
 }
 .header{
-    background-color: #3D5460;
-    max-height: 200px;
-    display: flex;
+    background-color: white;
+    display: block;
+	height: 75px;
+	border-bottom: #9e9c9c 1px solid;
 }
+
+.header-web {
+	width: 1200px;
+	display: flex;
+	flex-direction:row;
+	margin: 0 auto;
+	justify-content: space-between;
+}
+
+.main-page {
+	width: 1000px;
+	margin: 0 auto;
+}
+
 .img-logo {
-    width: 200px;
-    height: 183px;
+	width: 150px;
+	height: 75px;
     cursor: pointer;
 }
-
-/* ala{
-    <a href="#" class="myButton">grey</a>
-
-.myButton {
+    
+button {
 	background-color:#a8a8a8;
 	border-radius:28px;
-	border:1px solid #dedede;
-	display:inline-block;
+	border: 0;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
@@ -29,13 +60,10 @@ body {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #2f6627;
 }
-.myButton:hover {
+button:hover {
 	background-color:#737373;
 }
-.myButton:active {
+button:active {
 	position:relative;
 	top:1px;
 }
-
-        
-} */
