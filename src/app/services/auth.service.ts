@@ -3,22 +3,23 @@ import { User } from '../models/userLogin';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Announcement } from '../models/announcement';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private urlregister = "Auth/register";
-  private urllogin = "Auth/login";
+  private urlRegister = "Auth/register";
+  private urlLogin = "Auth/login";
 
   constructor(private http: HttpClient) { }
   public register(user: User): Observable<any>{
-    return this.http.post<any>(`${environment.apiUrl}/${this.urlregister}`, user);
+    return this.http.post<any>(`${environment.apiUrl}/${this.urlRegister}`, user);
   }
 
   public login(user: User): Observable<string> {
-    return this.http.post(`${environment.apiUrl}/${this.urllogin}`, user, {
+    return this.http.post(`${environment.apiUrl}/${this.urlLogin}`, user, {
       responseType: 'text',
     });
   }
