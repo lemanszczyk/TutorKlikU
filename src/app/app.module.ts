@@ -7,14 +7,18 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { MainComponent } from './pages/main/main.component';
-import { AnnouncementComponent } from './components/announcement/announcement.component'
+import { AnnouncementComponent } from './components/announcement/announcement.component';
+import { OneAnnouncementComponent } from './pages/one-announcement/one-announcement.component';
+import { ManagementUserComponent } from './pages/management-user/management-user.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     MainComponent,
-    AnnouncementComponent
+    AnnouncementComponent,
+    OneAnnouncementComponent,
+    ManagementUserComponent
   ],
   imports: [
     BrowserModule,

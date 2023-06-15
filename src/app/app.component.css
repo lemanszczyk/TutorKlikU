@@ -27,6 +27,7 @@ input:focus {
     display: block;
 	height: 75px;
 	border-bottom: #9e9c9c 1px solid;
+	padding-top: 5px;
 }
 
 .header-web {
@@ -59,6 +60,7 @@ button {
 	padding:13px 39px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #2f6627;
+	margin: 5px;
 }
 button:hover {
 	background-color:#737373;
