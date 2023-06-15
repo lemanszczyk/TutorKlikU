@@ -9,7 +9,7 @@ import { Announcement } from '../models/announcement';
 })
 export class AnnouncementService {
 
-  private urlGetAnnouncement = 'Announcement/GetAnnouncement';
+  private urlGetAnnouncement = 'Announcement/GetAnnouncements';
   
   constructor(private http: HttpClient) { }
   
