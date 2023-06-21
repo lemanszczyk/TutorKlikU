@@ -1,4 +1,5 @@
 <div>
-    {{announcement.annoucementName}} <br>
+     <br>
     {{announcement.annoucementDescription}}
+    <a routerLink="{{['/announcement/:id', announcement.annoucementId]}}">Link do {{announcement.annoucementName}}</a>
 </div>
