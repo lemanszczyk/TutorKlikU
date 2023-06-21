@@ -1,0 +1,16 @@
+.modal {
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    padding: 50px;
+    background-color: rgba(211, 208, 208, 0.5);
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+}
+
+button {
+    margin-right: auto;
+}
