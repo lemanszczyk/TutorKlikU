@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { SuperHero } from 'src/app/models/super-hero';
 import { User } from 'src/app/models/userLogin';
 import { AuthService } from 'src/app/services/auth.service';
@@ -13,20 +14,17 @@ import { SuperHeroService } from 'src/app/services/super-hero.service';
 
 export class LoginComponent {
   user = new User();
-  constructor(private superHeroService: SuperHeroService, private authService: AuthService) {}
-  // getMe(){
-  //   this.superHeroService
-  //   .getSuperHeroes()
-  //   .subscribe((result: SuperHero[]) => (this.heroes = result));
-  // }
-
-  register(user: User) {
-    this.authService.register(user).subscribe();
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
   login(user: User) {
-    this.authService.login(user).subscribe((token: string) => {
-      localStorage.setItem('authToken', token);
+    this.authService.login(user).subscribe({  
+      next: (token: string) => {
+        localStorage.setItem('authToken', token);
+        this.router.navigate(['/main']);
+      },
+      error: (err: any) => {
+        console.log(err.error);
+      }
     });
   }
 }

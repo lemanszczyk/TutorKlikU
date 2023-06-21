@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { userRegister } from 'src/app/models/userRegister';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,34 +10,18 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent {
   user = new userRegister();
-  constructor(private authService: AuthService) {}
-
-  // register(user: userRegister): void {
-  //   console.log(user);
-  //   this.authService.register(user).subscribe(
-  //     (result: any) => {
-  //     console.log(result.status);
-  //     if (result.status === 200){
-  //       console.log(result);
-  //     }
-  //   }, (error) => {
-  //     console.log(error.error);
-  //   });
-  // }
+  constructor(private authService: AuthService, private router: Router) {}
 
   register(user: userRegister): void {
     console.log(user);
     this.authService.register(user).subscribe(
       {
-        next: (result: any) => {
-          console.log(result.status);
-          if (result.status === 200){
-            console.log(result);
-          }
+        next: () => {
+            this.router.navigate(['/main']);
         },
-        error: (error) => {
-          console.log(error.error);
+        error: (err) => {
+          console.log(err.error);
         }
-      })
+      });
   }
 }
