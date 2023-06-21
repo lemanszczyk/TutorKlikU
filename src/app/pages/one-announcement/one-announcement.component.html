@@ -1,7 +1,7 @@
 <div *ngIf="announcement">
     <div class="modal">
         <p>{{announcement.annoucementId}}</p>
-        <img [src]="announcement.author!.profileImage">
+        <img [src]="imgUrl">
     </div>
     <div class="modal">
         {{announcement.tags }}

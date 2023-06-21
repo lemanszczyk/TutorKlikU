@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Sanitizer } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Announcement } from 'src/app/models/announcement';
 import { AnnouncementService } from 'src/app/services/announcement.service';
@@ -11,19 +12,23 @@ import { AnnouncementService } from 'src/app/services/announcement.service';
 export class OneAnnouncementComponent {
   id: number = 0;
   announcement!: Announcement;
+  imgUrl: SafeUrl | undefined;
 
-  constructor(private route: ActivatedRoute, private announcementService: AnnouncementService) {}
+  constructor(private route: ActivatedRoute, private announcementService: AnnouncementService, private domSanitizer: DomSanitizer) {}
   ngOnInit() {
     this.route.params.subscribe(params => {
       console.log(params);
       this.id = +params['id'];
     });
     this.getAnnouncement();
-    console.log(this.announcement);
   }
   getAnnouncement() {
     this.announcementService.getAnnoucement(this.id)
-    .subscribe((result: Announcement) => (this.announcement = result));
-    console.log(this.announcement);
-  }
+    .subscribe({
+      next: (result: Announcement) => {
+        this.announcement = result;
+        this.imgUrl = this.domSanitizer.bypassSecurityTrustUrl(this.announcement.author!.profileImage!);
+      } 
+    }
+    )}
 }
