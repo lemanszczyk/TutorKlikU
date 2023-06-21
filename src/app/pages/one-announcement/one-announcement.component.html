@@ -1,2 +1,8 @@
 <p>Id announcemnet {{id}}</p>
-<p *ngIf="announcement">{{announcement.annoucementId}}</p>
+<div *ngIf="announcement">
+    <p>{{announcement.annoucementId}}</p>
+    <br>
+    <div *ngFor="let comment of announcement.comments">
+        <app-comment [comment]="comment"></app-comment>
+    </div>
+</div>

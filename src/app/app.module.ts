@@ -12,7 +12,8 @@ import { MainComponent } from './pages/main/main.component';
 import { AnnouncementComponent } from './components/announcement/announcement.component';
 import { OneAnnouncementComponent } from './pages/one-announcement/one-announcement.component';
 import { ManagementUserComponent } from './pages/management-user/management-user.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommentComponent } from './components/comment/comment.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     MainComponent,
     AnnouncementComponent,
     OneAnnouncementComponent,
-    ManagementUserComponent
+    ManagementUserComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
