@@ -34,7 +34,7 @@ input:focus {
 }
 
 .header-web {
-	width: 1200px;
+	max-width: 1200px;
 	display: flex;
 	flex-direction:row;
 	margin: 0 auto;

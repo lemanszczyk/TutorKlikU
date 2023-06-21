@@ -1,5 +1,5 @@
 <div>
      <br>
     {{announcement.annoucementDescription}}
-    <a routerLink="{{['/announcement/:id', announcement.annoucementId]}}">Link do {{announcement.annoucementName}}</a>
+    <a [routerLink]="['/announcement', announcement.annoucementId]">Link do {{announcement.annoucementName}}</a>
 </div>
