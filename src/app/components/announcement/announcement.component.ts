@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Announcement } from 'src/app/models/announcement';
+import { AnnouncementService } from 'src/app/services/announcement.service';
 
 @Component({
   selector: 'app-announcement',
@@ -8,9 +9,22 @@ import { Announcement } from 'src/app/models/announcement';
 })
 export class AnnouncementComponent {
   @Input() announcement!: Announcement;
+  announcements: Announcement[] = [];
+
+  constructor(private announcementService: AnnouncementService) {}
 
   ngOnInit() {
-    console.log('aala1');
-    console.log(this.announcement);  
+    this.getAnnoucments();
+ }
+ 
+ getAnnoucments() {
+  this.announcementService.getAnnoucements().subscribe(
+    (announcements: Announcement[]) => {
+      this.announcements = announcements;
+    },
+    (error) => {
+      console.log(error);
+    }
+  );
  }
 }

@@ -30,7 +30,7 @@ input:focus {
     display: block;
 	height: 75px;
 	border-bottom: #9e9c9c 1px solid;
-	padding-top: 5px;
+	padding: 5px 0px;
 }
 
 .header-web {
