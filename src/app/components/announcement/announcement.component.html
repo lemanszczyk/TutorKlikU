@@ -1,5 +1,5 @@
-<div>
-     <br>
-    {{announcement.annoucementDescription}}
-    <a [routerLink]="['/announcement', announcement.annoucementId]">Link do {{announcement.annoucementName}}</a>
+<div class = "border grid-container">
+    <div class = "item1">{{announcement.annoucementName}}</div>   
+    <div class = "item2">{{announcement.annoucementDescription}}</div>
+    <div class = "item3">{{announcement.tags}}</div>
 </div>
