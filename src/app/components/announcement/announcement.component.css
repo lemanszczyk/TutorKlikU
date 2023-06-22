@@ -30,7 +30,7 @@
 }
 
 .item2 {
-    grid-column: 1 / span 5;
+    grid-column: 1 / span 4;
     grid-row: 2 / span 2;
     text-indent: 5%;
     text-align: justify;
@@ -41,4 +41,8 @@
 .item3 {
     grid-row: 2 / span 2;
     font-size: 15px;
+}
+
+.item4 {
+    grid-row: 2 / span 2;
 }

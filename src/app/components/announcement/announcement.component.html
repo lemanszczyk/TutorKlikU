@@ -2,4 +2,5 @@
     <div class = "item1">{{announcement.annoucementName}}</div>   
     <div class = "item2">{{announcement.annoucementDescription}}</div>
     <div class = "item3">{{announcement.tags}}</div>
+    <div class = "item4"><a [routerLink]="['/announcement', announcement.annoucementId]">Link do {{announcement.annoucementName}}</a></div>
 </div>
