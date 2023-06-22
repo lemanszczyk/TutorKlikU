@@ -1,0 +1,10 @@
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+}
+
+button {
+    margin-right: auto;
+}

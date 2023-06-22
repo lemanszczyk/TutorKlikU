@@ -4,31 +4,31 @@
         <h4>Username:</h4>
         <mat-form-field>
             <mat-label>Username</mat-label>
-            <input matInput>
+            <input [(ngModel)]="user.userName" matInput>
         </mat-form-field>
         <h4>Email:</h4>
         <mat-form-field>
             <mat-label>Email</mat-label>
-            <input matInput>
+            <input [(ngModel)]="user.email" matInput>
         </mat-form-field>
         <h4>Password:</h4>
         <mat-form-field>
             <mat-label>Password</mat-label>
-            <input matInput>
+            <input type="password" [(ngModel)]="user.password" matInput>
         </mat-form-field>
         <h4>Repeat Password:</h4>
         <mat-form-field>
             <mat-label>Repeat Password</mat-label>
-            <input matInput>
+            <input type="password" [(ngModel)]="user.confirmPassword" matInput>
         </mat-form-field>
         <h4>I am a:</h4>
         <mat-form-field>
-            <mat-select>
-                <mat-option value=""> -- Select -- </mat-option>
-                <mat-option value="10">Tutor</mat-option>
-                <mat-option value="11">Student/Parent</mat-option>
+            <mat-label> -- Select -- </mat-label>
+            <mat-select [(value)]="user.userType">
+                <mat-option [value]="'Tutor'">Tutor</mat-option>
+                <mat-option [value]="'Student'">Student</mat-option>
             </mat-select>
         </mat-form-field>
-        <button>Register</button>
+        <button (click)="register(user)">Register</button>
     </div>
 </div>

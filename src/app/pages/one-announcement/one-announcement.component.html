@@ -1,1 +1,17 @@
-<p>one-announcement works!</p>
+<div *ngIf="announcement">
+    <div class="modal">
+        <p>{{announcement.annoucementId}}</p>
+        <img [src]="imgUrl">
+    </div>
+    <div class="modal">
+        {{announcement.tags }}
+    </div>
+
+    <div class="modal">
+        <div *ngFor="let comment of announcement.comments">
+            <app-comment [comment]="comment"></app-comment>
+        </div>
+    </div>
+</div>
+
+

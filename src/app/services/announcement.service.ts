@@ -9,11 +9,17 @@ import { Announcement } from '../models/announcement';
 })
 export class AnnouncementService {
 
-  private urlGetAnnouncement = 'Announcement/GetAnnouncements';
+  private urlGetAnnouncements = 'Announcement/GetAnnouncements';
+  private urlGetAnnouncement = 'Announcement/GetAnnouncement';
   
   constructor(private http: HttpClient) { }
   
   public getAnnoucements(): Observable<Announcement[]> {
-    return this.http.get<Announcement[]>(`${environment.apiUrl}/${this.urlGetAnnouncement}`)
+    return this.http.get<Announcement[]>(`${environment.apiUrl}/${this.urlGetAnnouncements}`)
+  }
+  
+  public getAnnoucement(id: number): Observable<Announcement> {
+    const url = `${this.urlGetAnnouncement}/?id=${id}`;
+    return this.http.get<Announcement>(`${environment.apiUrl}/${url}`)
   }
 }

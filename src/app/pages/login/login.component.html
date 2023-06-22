@@ -1,11 +1,16 @@
-<div>
-  Name:
-  <input [(ngModel)]="user.userName" placeholder="Name">
-</div>
-<div>
-  Password:
-  <input [(ngModel)]="user.password" placeholder="Password" type="password">
-</div>
-<button (click)="login(user)">Login</button>
-<div>
+<div class="modal">
+  <div class="modal-content">
+    <h2>Log in with username:</h2>
+    <h4>Username:</h4>
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input [(ngModel)]="user.userName" matInput>
+    </mat-form-field>
+    <h4>Password:</h4>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input type="password" [(ngModel)]="user.password" matInput>
+    </mat-form-field>
+    <button (click)="login(user)">Login</button>
+  </div>
 </div>
