@@ -1,6 +1,9 @@
 <div class = "border grid-container modal">
-    <div class = "item1">{{announcement.annoucementName}}</div>   
-    <div class = "item2">{{announcement.annoucementDescription}}</div>
-    <div class = "item3">{{announcement.tags}}</div>
-    <div class = "item4"><a [routerLink]="['/announcement', announcement.annoucementId]">Link do {{announcement.annoucementName}}</a></div>
+    <div class = "item1"><img [src] = "imgUrl"></div>
+    <div class = "item2">{{announcement.annoucementName}}</div>   
+    <div class = "item3">{{announcement.annoucementDescription}}</div>
+    <div class = "item4" *ngIf="announcement.comments">Średnia ocen: {{calculateAverageRating(announcement.comments)}}</div>
+    <div class = "item5" *ngIf="announcement.comments">Liczba komentarzy: {{announcement.comments.length}}</div>
+    <div class = "item6">{{announcement.tags}}</div>
+    <div class = "item7"><a [routerLink]="['/announcement', announcement.annoucementId]">Link do {{announcement.annoucementName}}</a></div>
 </div>
