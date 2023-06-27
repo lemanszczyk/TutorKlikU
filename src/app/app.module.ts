@@ -13,7 +13,9 @@ import { AnnouncementComponent } from './components/announcement/announcement.co
 import { OneAnnouncementComponent } from './pages/one-announcement/one-announcement.component';
 import { ManagementUserComponent } from './pages/management-user/management-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommentComponent } from './components/comment/comment.component'
+import { CommentComponent } from './components/comment/comment.component';
+import { AddCommentDialogComponent } from './components/add-comment-dialog/add-comment-dialog.component'
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { CommentComponent } from './components/comment/comment.component'
     AnnouncementComponent,
     OneAnnouncementComponent,
     ManagementUserComponent,
-    CommentComponent
+    CommentComponent,
+    AddCommentDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { CommentComponent } from './components/comment/comment.component'
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

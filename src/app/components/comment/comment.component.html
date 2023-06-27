@@ -1,3 +1,11 @@
 <div class="modal">
-<p>{{comment.description}}</p>
+    <div class="commmentTitle">
+        <h4 style="font-weight: bold;">Author: {{comment.author.userName}}</h4>
+        <h4 style="font-weight: bold;">Rate: {{comment.rate}}/5</h4>
+    </div>
+
+    <div class="descriptionComment">
+        <img class="imageAccount" *ngIf="imgUrl" [src] = "imgUrl"> <img class="imageAccount" *ngIf="!imgUrl" src="../../../assets/default-user-image.png">
+        <p>{{comment.description}}</p>
+    </div>
 </div>

@@ -1,8 +1,10 @@
 import { Component, Sanitizer } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { AddCommentDialogComponent } from 'src/app/components/add-comment-dialog/add-comment-dialog.component';
 import { Announcement } from 'src/app/models/announcement';
 import { AnnouncementService } from 'src/app/services/announcement.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-one-announcement',
@@ -16,7 +18,7 @@ export class OneAnnouncementComponent {
   averageRating: number = 0;
   email: string = '';
 
-  constructor(private route: ActivatedRoute, private announcementService: AnnouncementService, private domSanitizer: DomSanitizer) {}
+  constructor(private route: ActivatedRoute, private announcementService: AnnouncementService, private domSanitizer: DomSanitizer, public dialog: MatDialog) {}
   ngOnInit() {
     this.route.params.subscribe(params => {
       console.log(params);
@@ -32,7 +34,15 @@ export class OneAnnouncementComponent {
         this.imgUrl = this.domSanitizer.bypassSecurityTrustUrl(this.announcement.author!.profileImage!);
         this.averageRating = this.announcementService.countAverageRating(this.announcement);
         this.email = 'mailto:' + this.announcement.author!.email;
-      } 
-    }
+        } 
+      }
     )}
+
+    openDialog() {
+      let dialogRef = this.dialog.open(AddCommentDialogComponent, {
+        height: '450px',
+        width: '600px',
+        data:  {announcementId: this.announcement.annoucementId}
+      });
+    }
 }

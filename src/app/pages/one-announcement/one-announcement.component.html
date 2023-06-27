@@ -32,6 +32,7 @@
         <div *ngFor="let comment of announcement.comments">
             <app-comment [comment]="comment"></app-comment>
         </div>
+        <button (click)="openDialog()" style="margin-top: 20px;">Add Comment</button>
     </div>
 </div>
 
