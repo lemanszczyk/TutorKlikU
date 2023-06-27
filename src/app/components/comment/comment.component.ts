@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import  {Comment} from '../../models/comment';
+import { User } from 'src/app/models/user';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-comment',
@@ -8,8 +10,11 @@ import  {Comment} from '../../models/comment';
 })
 export class CommentComponent {
   @Input() comment!: Comment;
-  
+  imgUrl: SafeUrl | undefined;
+
+  constructor(private domSanitizer: DomSanitizer) {}
+
   ngOnInit() {
-    console.log(this.comment);  
+    this.imgUrl = this.domSanitizer.bypassSecurityTrustUrl(this.comment.author.profileImage!);
  }
 }

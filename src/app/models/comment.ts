@@ -1,6 +1,9 @@
+import { User } from "./user";
+
 export class Comment {
     commentId? : number;
     description: string = '';
     rate?: number;
-    author: string = '';
+    author!: User;
+    announcementId!: number;
 }
