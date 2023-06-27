@@ -13,6 +13,8 @@ export class OneAnnouncementComponent {
   id: number = 0;
   announcement!: Announcement;
   imgUrl: SafeUrl | undefined;
+  averageRating: number = 0;
+  email: string = '';
 
   constructor(private route: ActivatedRoute, private announcementService: AnnouncementService, private domSanitizer: DomSanitizer) {}
   ngOnInit() {
@@ -28,6 +30,8 @@ export class OneAnnouncementComponent {
       next: (result: Announcement) => {
         this.announcement = result;
         this.imgUrl = this.domSanitizer.bypassSecurityTrustUrl(this.announcement.author!.profileImage!);
+        this.averageRating = this.announcementService.countAverageRating(this.announcement);
+        this.email = 'mailto:' + this.announcement.author!.email;
       } 
     }
     )}

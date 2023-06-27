@@ -22,4 +22,17 @@ export class AnnouncementService {
     const url = `${this.urlGetAnnouncement}/?id=${id}`;
     return this.http.get<Announcement>(`${environment.apiUrl}/${url}`)
   }
+
+  public countAverageRating(ann: Announcement): number {
+    let sum: number = 0;
+    let count: number = 0;
+    ann.comments?.forEach( x => {
+      sum += x.rate!;
+      count++;
+    })
+    if(count == 0){
+      return 0;
+    }
+    return sum/count;
+  }
 }

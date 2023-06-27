@@ -1,13 +1,34 @@
 <div *ngIf="announcement">
     <div class="modal">
-        <p>{{announcement.annoucementId}}</p>
-        <img [src]="imgUrl">
+        <h2>{{announcement.annoucementName}}</h2>
+        <h4>{{announcement.author!.userName}}</h4>
+        <div class="description">
+            <img class="imageAccount" [src]="imgUrl">
+            <div>{{announcement.annoucementDescription}}</div>
+        </div>
+        <div style="display: inline-flex;">
+            <h4 style="margin-right: 5px;">Price: </h4>
+            <h4>tutaj cena</h4>
+        </div>
+        <br>
+        <div style="display: inline-flex;">
+            <h4 style="margin-right: 5px;">Contact:</h4>
+            <h4><a [href]="email">{{announcement.author!.email}}</a></h4>
+        </div>
     </div>
     <div class="modal">
-        {{announcement.tags }}
+        <h4>Tags:</h4>
+        <div class="tags">
+            <div class="tagContainer" *ngFor="let tag of announcement.tags">
+                {{tag}}
+            </div>
+        </div>
     </div>
-
     <div class="modal">
+        <div class="commmentTitle">
+            <h3>Comments:</h3>
+            <h3 class="rating">{{averageRating}}/5</h3>
+        </div>
         <div *ngFor="let comment of announcement.comments">
             <app-comment [comment]="comment"></app-comment>
         </div>
