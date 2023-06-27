@@ -4,12 +4,14 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MainComponent } from './pages/main/main.component';
 import { OneAnnouncementComponent } from './pages/one-announcement/one-announcement.component';
+import { ManagementUserComponent } from './pages/management-user/management-user.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'main', component: MainComponent},
-  {path: 'announcement/:id', component: OneAnnouncementComponent }
+  {path: 'announcement/:id', component: OneAnnouncementComponent },
+  {path: 'userInfo', component: ManagementUserComponent}
 ];
 
 const wildcardRedirectsRoutes: Routes = [
