@@ -10,6 +10,7 @@
 .grid-container {
     display: grid;
     grid-template-areas: auto auto auto auto;
+    grid-template-columns: 1fr 20% 2fr 30%;
     gap: 8px;
     padding: 8px;
 }
