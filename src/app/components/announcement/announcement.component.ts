@@ -26,9 +26,8 @@ export class AnnouncementComponent {
     (announcements: Announcement[]) => {
       this.announcements = announcements;
 
-      this.imgUrl = this.domSanitizer.bypassSecurityTrustUrl(this.announcement.author!.profileImage!);
-      if (!this.imgUrl) {
-        this.imgUrl = 'src\\assets\\default-user-image.png';
+      if (this.announcement.author && this.announcement.author.profileImage) {
+        this.imgUrl = this.domSanitizer.bypassSecurityTrustUrl(this.announcement.author.profileImage) as SafeUrl;
       }
     },
     (error) => {

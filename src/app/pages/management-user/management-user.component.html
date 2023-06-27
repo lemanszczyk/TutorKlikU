@@ -1,1 +1,26 @@
-<p>management-user works!</p>
+<div *ngIf="user">
+    <img class="imageAccount" *ngIf="imgUrl" [src] = "imgUrl"> <img class="imageAccount" *ngIf="!imgUrl" src="assets/default-user-image.png">
+    <p>Nazwa użytkownika: {{user.userName}}</p>
+    <p>Adres e-mail: {{user.email}}</p>
+    <p>Jestem {{user.userType}}</p>
+</div>
+
+<div>
+    <button (click)="updateUser(name, 'nazwa'); name = ''">AKTUALIZUJ NAZWE</button>
+    <textarea placeholder = "Wprowadź nową nazwę" [(ngModel)] = "name"></textarea>
+</div>
+    
+<div>
+    <button (click)="updateUser(mail, 'mail'); mail = ''">AKTUALIZUJ MAIL</button>
+    <textarea placeholder = "Wprowadź nowy adres e-mail" [(ngModel)] = "mail"></textarea>
+</div>
+
+<div>
+    <button (click)="updateUser(type, 'typ'); type = ''">AKTUALIZUJ TYP</button>
+    <textarea placeholder = "Wprowadź nowy typ" [(ngModel)] = "type"></textarea>
+</div>
+
+<div>
+    <button (click)="updateUser(image, 'obraz')">AKTUALIZUJ OBRAZ</button>
+    <input type = "file" accept=".jpeg, .jpg, .png, .bmp" multiple = "false" (change) = "onFileSelected($event)">
+</div>
