@@ -42,7 +42,14 @@ export class ManagementUserComponent {
         console.log('Wprowadzona nazwa:', this.user.userName);
         break;
       case 'mail':
-        this.user.email = temp;
+        // Regex dla e-maila
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (emailRegex.test(temp)) {
+          this.user.email = temp;
+          this.mail = '';
+        } else {
+          this.mail = "Błedny e-mail!";
+        }
         console.log('Wprowadzony mail:', this.user.email);
         break;
       case 'typ':
