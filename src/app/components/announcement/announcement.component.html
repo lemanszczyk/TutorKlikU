@@ -1,5 +1,5 @@
 <div class = "border grid-container modal">
-    <div class = "item1"><img [src] = "imgUrl"></div>
+    <div class = "item1"><img class="imageAccount" *ngIf="imgUrl" [src] = "imgUrl"> <img class="imageAccount" *ngIf="!imgUrl" src="../../../assets/default-user-image.png"></div>
     <div class = "item2">{{announcement.annoucementName}}</div>   
     <div class = "item3">{{announcement.annoucementDescription}}</div>
     <div class = "item4" *ngIf="announcement.comments">Średnia ocen: {{calculateAverageRating(announcement.comments)}}</div>
