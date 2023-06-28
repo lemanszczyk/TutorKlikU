@@ -20,7 +20,7 @@ export class LoginComponent {
     this.authService.login(user).subscribe({  
       next: (token: string) => {
         localStorage.setItem('authToken', token);
-        this.router.navigate(['/main']);
+        this.router.navigate(['/main']).then(() => window.location.reload());
       },
       error: (err: any) => {
         console.log(err.error);

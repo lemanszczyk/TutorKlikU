@@ -39,4 +39,26 @@
     text-align: justify;
     text-justify: inter-word;
     font-size: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: '...';
+}
+
+.item6 {
+    grid-column: 3 / span 2 ;
+}
+
+.tagContainer {
+    background-color: rgba(211, 208, 208, 0.5);
+    border-radius: 15px;
+    padding: 5px 20px;
+    margin: 5px;
+}
+
+.link {
+    text-decoration: none; 
+    color: inherit;
+}
+.link:hover {
+    text-shadow: 1px 1px 1px black;
 }

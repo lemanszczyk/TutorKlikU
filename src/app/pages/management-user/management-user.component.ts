@@ -20,12 +20,11 @@ export class ManagementUserComponent {
   constructor(private route: ActivatedRoute, private domSanitizer: DomSanitizer, private userService: UserService) {}
   
   ngOnInit() {
-    const a = 1;
-    this.getAnnouncement(a);
+    this.getUserData();
   }
 
-  getAnnouncement(id: number) {
-    this.userService.getUser(id).subscribe({
+  getUserData() {
+    this.userService.getUser().subscribe({
       next: (result: User) => {
         this.user = result;
         if (this.user.profileImage) {

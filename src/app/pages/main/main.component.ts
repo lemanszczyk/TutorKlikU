@@ -12,7 +12,6 @@ export class MainComponent {
   announcements!: Announcement[];
 
   ngOnInit() {
-    console.log('ss');
     this.getAnnouncement();
  }
 
