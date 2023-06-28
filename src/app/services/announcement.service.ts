@@ -11,6 +11,7 @@ export class AnnouncementService {
 
   private urlGetAnnouncements = 'Announcement/GetAnnouncements';
   private urlGetAnnouncement = 'Announcement/GetAnnouncement';
+  private urlAddAnnouncement = 'Announcement/AddAnnouncement';
   
   constructor(private http: HttpClient) { }
   
@@ -34,5 +35,9 @@ export class AnnouncementService {
       return 0;
     }
     return sum/count;
+  }
+
+  public addAnnoucement(announcement: Announcement): Observable<Announcement> {
+    return this.http.post<Announcement>(`${environment.apiUrl}/${this.urlAddAnnouncement}`, announcement);
   }
 }

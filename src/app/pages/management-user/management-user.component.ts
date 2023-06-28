@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { UserPassword } from 'src/app/models/userPassword';
+import { AddAnnouncementDialogComponent } from 'src/app/components/add-announcement-dialog/add-announcement-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-management-user',
@@ -20,7 +22,7 @@ export class ManagementUserComponent {
   image: string = ''; imageError: string = '';
   password: string = ''; password2: string = ''; passwordError: string = '';
   
-  constructor(private route: ActivatedRoute, private domSanitizer: DomSanitizer, private userService: UserService) {}
+  constructor(private route: ActivatedRoute, private domSanitizer: DomSanitizer, private userService: UserService, public dialog: MatDialog) {}
   
   ngOnInit() {
     const a = 1;
@@ -90,10 +92,12 @@ export class ManagementUserComponent {
 
       // Obraz o rozmiarze maksymalnie ~1 MB
       case 'obraz':
-        if (temp != 'Błąd') {
+        if (temp != 'Błąd' && temp != '') {
           this.user.profileImage = temp;
           this.imageError = '';
           console.log("Obraz wprowadzony");
+        } else if (temp == '') {
+          this.imageError = "*Musisz wybrać obraz";
         } else {
           this.imageError = "*Obraz może mieć rozmiar maksymalnie 1 MB";
         }
@@ -113,6 +117,11 @@ export class ManagementUserComponent {
         console.error('NIE UDAŁO SIĘ ZAKTUALIZOWAĆ :(');
       }
     );
+
+    // Przeładowanie obrazka dla profilowego
+    if (choice == 'obraz' && temp != '' && temp != 'Błąd') {
+      window.location.reload();
+    }
   }
 
   updatePassword() {
@@ -152,5 +161,13 @@ export class ManagementUserComponent {
       }
     };
     reader.readAsDataURL(file);
+  }
+
+  openDialog() {
+    let dialogRef = this.dialog.open(AddAnnouncementDialogComponent, {
+      height: '550px',
+      width: '600px',
+      data:  {user: this.user}
+    });
   }
 }
