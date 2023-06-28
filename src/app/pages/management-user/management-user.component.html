@@ -1,16 +1,29 @@
 <div class = "grid-container modal" *ngIf="user">
-    <div class="item1" style="align-items: center;"><img class="border" *ngIf="imgUrl" [src] = "imgUrl"> <img class="imageAccount" *ngIf="!imgUrl" src="assets/default-user-image.png"></div>
+    <div class="item1" style="align-items: center;"><img class="border" *ngIf="imgUrl" [src] = "imgUrl"> <img class="border" *ngIf="!imgUrl" src="assets/default-user-image.png"></div>
     <p class="itemnext">Nazwa użytkownika: {{user.userName}}</p>
     <p class="itemnext">Adres e-mail: {{user.email}}</p>
     <p class="itemnext">{{user.userType}}</p>
 </div>
 
 <div class = "container">
-    <button class = "item button-1" (click)="updateUser(name, 'nazwa'); name = ''">AKTUALIZUJ NAZWE</button>
-    <input class = "item item-right input-text" type = "text" placeholder = "Wprowadź nową nazwę" [(ngModel)] = "name">
+    <button class = "item button-1" (click)="updateUser(name, 'nazwa'); name = ''">AKTUALIZUJ NAZWĘ</button>
+    <div class = "item item-right">
+        <input class = "input-text" type = "text" placeholder = "Wprowadź imię i nazwisko" [(ngModel)] = "name">
+        <label class = "label-error" [ngStyle]="{ 'display': nameError ? 'display' : 'inline' }">{{nameError}}</label>
+    </div>
 
-    <button class = "item button-1" (click)="updateUser(mail, 'mail')">AKTUALIZUJ MAIL</button>
-    <input class = "item item-right input-text" type = "text" placeholder = "Wprowadź nowy adres e-mail" [(ngModel)] = "mail">
+    <button class = "item button-1" (click)="updateUser(mail, 'mail')">AKTUALIZUJ E-MAIL</button>
+    <div class = "item item-right">
+        <input class = "input-text" type = "text" placeholder = "Wprowadź nowy adres e-mail" [(ngModel)] = "mail">
+        <label class = "label-error" [ngStyle]="{ 'display': mailError ? 'display' : 'inline' }">{{mailError}}</label>
+    </div>
+
+    <button class = "item button-1" (click)="updatePassword()">AKTUALIZUJ HASŁO</button>
+    <div class = "item item-right">
+        <input class = "input-text" type = "text" placeholder = "Wprowadź nowe hasło" [(ngModel)] = "password">
+        <input class = "input-text" type = "text" placeholder = "Powtórz nowe hasło" [(ngModel)] = "password2">
+        <label class = "label-error" [ngStyle]="{ 'display': passwordError ? 'display' : 'inline' }">{{passwordError}}</label>
+    </div>
 
     <button class = "item button-1" (click)="updateUser(type, 'typ'); type = ''">AKTUALIZUJ TYP</button>
     <input style = "display: none;"class = "item item-right input-text" type = "text" placeholder = "Wprowadź nowy typ" [(ngModel)] = "type">
@@ -20,9 +33,13 @@
         <label for="Korepetytorem">Korepetytorem</label>
 
         <input type="radio" name="type" value="Uczeń" [(ngModel)]="type" />
-        <label for="option2">Uczniem</label>
+        <label for="Uczniem">Uczniem</label>
+        <label class = "label-error" [ngStyle]="{ 'display': typeError ? 'display' : 'inline' }">{{typeError}}</label>
     </div>
 
     <button class = "item button-1" (click)="updateUser(image, 'obraz')">AKTUALIZUJ OBRAZ</button>
-    <input class = "item item-right" type = "file" accept=".jpeg, .jpg, .png, .bmp" multiple = "false" max="65536" (change) = "onFileSelected($event)">
+    <div class = "item item-right">
+        <input type = "file" accept=".jpeg, .jpg, .png, .bmp" multiple = "false" (change) = "onFileSelected($event)">
+        <label class = "label-error" [ngStyle]="{ 'display': imageError ? 'display' : 'inline' }">{{imageError}}</label>
+    </div>
 </div>

@@ -3,6 +3,7 @@ import { User } from '../models/user';
 import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { UserPassword } from '../models/userPassword';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { environment } from 'src/environments/environment';
 export class UserService {
   private urlGetUser = 'User/GetUser';
   private urlUser = 'User';
+  private urlUpdatePassword = 'User/UpdatePassword'
 
   constructor(private http: HttpClient) { }
 
@@ -21,9 +23,14 @@ export class UserService {
   }
 
   public updateUser(user: User): Observable<User> {
-    const url = `${environment.apiUrl}/${this.urlUser}?userId=${user.userId}`;
+    const url = `${environment.apiUrl}/${this.urlUser}`;
     return this.http.put<User>(url, user).pipe(
       map((updatedUser: User) => updatedUser)
     );
+  }
+
+  public updatePassword(user: UserPassword): Observable<UserPassword> {
+    const url = `${environment.apiUrl}/${this.urlUpdatePassword}`;
+    return this.http.put<UserPassword>(url, user);
   }
 }
