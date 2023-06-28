@@ -15,9 +15,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  public getUser(id: number): Observable<User> { 
-    const url = `${this.urlGetUser}?id=${id}`;
-    return this.http.get<User>(`${environment.apiUrl}/${url}`).pipe(
+  public getUser(): Observable<User> { 
+    return this.http.get<User>(`${environment.apiUrl}/${this.urlGetUser}`).pipe(
       map((user: User) => user || [])
     );
   }

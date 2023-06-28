@@ -25,13 +25,13 @@ export class ManagementUserComponent {
   constructor(private route: ActivatedRoute, private domSanitizer: DomSanitizer, private userService: UserService, public dialog: MatDialog) {}
   
   ngOnInit() {
+    this.getUserData();
     const a = 1;
-    this.getAnnouncement(a);
     this.getUserPassword(a);
   }
 
-  getAnnouncement(id: number) {
-    this.userService.getUser(id).subscribe({
+  getUserData() {
+    this.userService.getUser().subscribe({
       next: (result: User) => {
         this.user = result;
         if (this.user.profileImage) {

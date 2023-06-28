@@ -1,9 +1,16 @@
-<div class = "border grid-container modal">
-    <div class = "item1"><img class="imageAccount" *ngIf="imgUrl" [src] = "imgUrl"> <img class="imageAccount" *ngIf="!imgUrl" src="assets/default-user-image.png"></div>
-    <div class = "item2">{{announcement.annoucementName}}</div>   
-    <div class = "item3">{{announcement.annoucementDescription}}</div>
-    <div class = "item4" *ngIf="announcement.comments">Średnia ocen: {{calculateAverageRating(announcement.comments)}}</div>
-    <div class = "item5" *ngIf="announcement.comments">Liczba komentarzy: {{announcement.comments.length}}</div>
-    <div class = "item6">{{announcement.tags}}</div>
-    <div class = "item7"><a [routerLink]="['/announcement', announcement.annoucementId]">Link do {{announcement.annoucementName}}</a></div>
+<div class="border grid-container modal">
+    <div class="item1"><img class="imageAccount" *ngIf="imgUrl" [src]="imgUrl"> <img class="imageAccount"
+            *ngIf="!imgUrl" src="assets/default-user-image.png"></div>
+    <div class="item2"><a class="link"
+            [routerLink]="['/announcement', announcement.annoucementId]">{{announcement.annoucementName}}</a></div>
+    <div class="item3">{{announcement.annoucementDescription}}</div>
+    <div class="item4" *ngIf="announcement.comments">Średnia ocen: {{calculateAverageRating(announcement.comments)}}
+    </div>
+    <div class="item5" *ngIf="announcement.comments">Liczba komentarzy: {{announcement.comments.length}}</div>
+    <div style="display: inline-flex;" class="item6">
+        <div class="tagContainer" *ngFor="let tag of announcement.tags">
+            {{tag}}
+        </div>
+    </div>
+    <!-- <div class = "item7">Link do {{announcement.annoucementName}}</div> -->
 </div>
