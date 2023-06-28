@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommentComponent } from './components/comment/comment.component';
 import { AddCommentDialogComponent } from './components/add-comment-dialog/add-comment-dialog.component'
 import { MatDialogModule } from '@angular/material/dialog';
+import { AddAnnouncementDialogComponent } from './components/add-announcement-dialog/add-announcement-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     OneAnnouncementComponent,
     ManagementUserComponent,
     CommentComponent,
-    AddCommentDialogComponent
+    AddCommentDialogComponent,
+    AddAnnouncementDialogComponent
   ],
   imports: [
     BrowserModule,

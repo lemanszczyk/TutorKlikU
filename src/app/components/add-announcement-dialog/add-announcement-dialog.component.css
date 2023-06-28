@@ -1,0 +1,13 @@
+.inputAnnouncement {
+    width: 100%; 
+    min-height: 160px;
+}
+
+.titleInput {
+    width: 100%;
+}
+
+.label-error {
+    padding-left: 10px;
+    color: red;
+}
