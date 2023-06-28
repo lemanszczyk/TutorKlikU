@@ -38,6 +38,7 @@ export class AnnouncementService {
   }
 
   public addAnnoucement(announcement: Announcement): Observable<Announcement> {
+    console.log(announcement)
     return this.http.post<Announcement>(`${environment.apiUrl}/${this.urlAddAnnouncement}`, announcement);
   }
 }

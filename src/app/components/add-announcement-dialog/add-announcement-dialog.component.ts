@@ -11,6 +11,7 @@ import { AnnouncementService } from 'src/app/services/announcement.service';
 export class AddAnnouncementDialogComponent {
   announcement = new Announcement();
   emptyFieldError: string = '';
+  tags: string = '';
 
   constructor(private announcementService: AnnouncementService, public dialogRef: MatDialogRef<AddAnnouncementDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
 
@@ -24,8 +25,9 @@ export class AddAnnouncementDialogComponent {
     }
     else {
       this.emptyFieldError = '';
-      this.announcement.author = this.data;
+      // this.announcement.author = this.data;
       console.log(this.announcement.annoucementName + ": " + this.announcement.annoucementDescription);
+      this.announcement.tags = this.tags.split(',')
       this.announcementService.addAnnoucement(this.announcement).subscribe( x => {
         if( x !== null){
           this.dialogRef.close();

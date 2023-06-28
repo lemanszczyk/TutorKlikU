@@ -26,8 +26,7 @@ export class ManagementUserComponent {
   
   ngOnInit() {
     this.getUserData();
-    const a = 1;
-    this.getUserPassword(a);
+    // this.getUserPassword();
   }
 
   getUserData() {
@@ -41,8 +40,8 @@ export class ManagementUserComponent {
     })
   }
 
-  getUserPassword(id: number) {
-    this.userService.getUser(id).subscribe({
+  getUserPassword() {
+    this.userService.getUser().subscribe({
       next: (result: UserPassword) => {
         this.userPassword = result;
       }

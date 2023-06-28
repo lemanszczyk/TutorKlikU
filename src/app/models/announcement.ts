@@ -5,7 +5,7 @@ export class Announcement {
     annoucementId?: number;
     annoucementName: string = '';
     annoucementDescription: string = '';
-    tags?: string;
+    tags?: string[];
     comments?: Comment[];
     author?: User;
 }
