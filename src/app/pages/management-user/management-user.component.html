@@ -5,7 +5,7 @@
     <p class="itemnext">Role: {{user.userType}}</p>
 </div>
 
-<div class="modal">
+<div *ngIf="announcements" class="modal">
     <h2>User announcements:</h2>
     <div *ngFor="let ann of announcements" class="announcemenntContainer">
         <a class="link" [routerLink]="['/announcement', ann.annoucementId]">{{ann.annoucementName}}</a>
@@ -51,5 +51,5 @@
         <label class = "label-error" [ngStyle]="{ 'display': imageError ? 'display' : 'inline' }">{{imageError}}</label>
     </div>
 
-    <button class = "item button-1" (click)="openDialog()" style="margin-top: 20px;">ADD ANNOUNCEMENT</button>
+    <button *ngIf="user && user.userType == 'Tutor'" class = "item button-1" (click)="openDialog()" style="margin-top: 20px;">ADD ANNOUNCEMENT</button>
 </div>

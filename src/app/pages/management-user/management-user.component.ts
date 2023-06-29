@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { UserPassword } from 'src/app/models/userPassword';
@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AnnouncementService } from 'src/app/services/announcement.service';
 import { Announcement } from 'src/app/models/announcement';
 import { EditAnnouncementDialogComponent } from 'src/app/components/edit-announcement-dialog/edit-announcement-dialog.component';
+import { AlertDialogComponent } from 'src/app/components/alert-dialog/alert-dialog.component';
 
 @Component({
   selector: 'app-management-user',
@@ -27,12 +28,11 @@ export class ManagementUserComponent {
   announcements: Announcement[] | undefined;
   
   
-  constructor(private route: ActivatedRoute, private announcementService: AnnouncementService, private domSanitizer: DomSanitizer, private userService: UserService, public dialog: MatDialog) {}
+  constructor(private router: Router, private route: ActivatedRoute, private announcementService: AnnouncementService, private domSanitizer: DomSanitizer, private userService: UserService, public dialog: MatDialog) {}
   
   ngOnInit() {
     this.getUserData();
     // this.getUserPassword();
-    this.getUserAnnouncement();
   }
 
   getUserAnnouncement() {
@@ -44,6 +44,10 @@ export class ManagementUserComponent {
     this.userService.getUser().subscribe({
       next: (result: User) => {
         this.user = result;
+        if(this.user.userType == 'Tutor') {
+          this.getUserAnnouncement();
+        }
+
         if (this.user.profileImage) {
           this.imgUrl = this.domSanitizer.bypassSecurityTrustUrl(this.user.profileImage) as SafeUrl;
         }
@@ -85,6 +89,7 @@ export class ManagementUserComponent {
           this.name = '';
           this.nameError = '';
           console.log('Wprowadzona nazwa:', this.user.userName);
+          this.confirm();
         } else {
           this.nameError = '*Nazwa użytkownika to imię i nazwisko, np. Jan Kowalski'
         }
@@ -111,6 +116,7 @@ export class ManagementUserComponent {
           this.user.userType = temp;
           this.typeError = '';
           console.log('Wprowadzony typ:', this.user.userType);
+          this.confirm();
         } else {
           this.typeError = "*Musisz wybrać wartość!";
         }
@@ -135,6 +141,17 @@ export class ManagementUserComponent {
     }
 
     // Update usera z nową wartością
+    if ( choice != ('typ' || 'nazwa')){
+      this.userUpdate()
+    }
+
+    // Przeładowanie obrazka dla profilowego
+    if (choice == 'obraz' && temp != '' && temp != 'Błąd') {
+      window.location.reload();
+    }
+  }
+
+  userUpdate() {
     this.userService.updateUser(this.user).subscribe(
       updatedUser => {
         console.log('UDAŁO SIĘ ZAKTUALIZOWAĆ?');
@@ -143,11 +160,25 @@ export class ManagementUserComponent {
         console.error('NIE UDAŁO SIĘ ZAKTUALIZOWAĆ :(');
       }
     );
+  }
 
-    // Przeładowanie obrazka dla profilowego
-    if (choice == 'obraz' && temp != '' && temp != 'Błąd') {
-      window.location.reload();
-    }
+  confirm() {
+    let dialogRef = this.dialog.open(AlertDialogComponent, {
+      height: '200px',
+      width: '400px',
+      data:  'Po wybraniu tej akcji zostaniesz wylogowany, czy jesteś pewny?'
+    });
+    dialogRef.afterClosed().subscribe(x =>{
+      if (x.event == 'Cancel'){
+        return;
+      }
+      else { 
+        this.userUpdate();
+        localStorage.clear();
+        this.router.navigate(['/main']).then(() => window.location.reload());
+      }
+
+    })
   }
 
   updatePassword() {
