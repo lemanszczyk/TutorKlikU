@@ -16,5 +16,8 @@ export class CommentComponent {
 
   ngOnInit() {
     this.imgUrl = this.domSanitizer.bypassSecurityTrustUrl(this.comment.author.profileImage!);
+    if (this.comment.author.profileImage == null){
+      this.imgUrl = '../../../assets/default-user-image.png';
+    }
  }
 }

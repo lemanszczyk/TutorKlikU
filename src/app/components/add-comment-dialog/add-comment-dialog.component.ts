@@ -41,7 +41,7 @@ export class AddCommentDialogComponent {
   }
 
   validate(): void {
-    if (this.comment.description == '') {
+    if (this.comment.description === '') {
       this.error = "*Empty comment";
     }
   }

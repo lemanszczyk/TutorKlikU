@@ -5,7 +5,7 @@
     </div>
 
     <div class="descriptionComment">
-        <img class="imageAccount" *ngIf="imgUrl" [src] = "imgUrl"> <img class="imageAccount" *ngIf="!imgUrl" src="../../../assets/default-user-image.png">
+        <img class="imageAccount"  [src]="imgUrl">
         <p>{{comment.description}}</p>
     </div>
 </div>

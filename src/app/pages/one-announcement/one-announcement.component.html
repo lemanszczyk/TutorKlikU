@@ -3,7 +3,7 @@
         <h2>{{announcement.annoucementName}}</h2>
         <h4>{{announcement.author!.userName}}</h4>
         <div class="description">
-            <img class="imageAccount" [src]="imgUrl">
+            <img *ngIf="imgUrl" class="imageAccount" [src]="imgUrl">
             <div>{{announcement.annoucementDescription}}</div>
         </div>
         <!-- <div style="display: inline-flex;">

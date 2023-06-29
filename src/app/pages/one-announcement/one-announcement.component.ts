@@ -35,9 +35,15 @@ export class OneAnnouncementComponent {
       next: (result: Announcement) => {
         this.announcement = result;
         this.imgUrl = this.domSanitizer.bypassSecurityTrustUrl(this.announcement.author!.profileImage!);
+        if(this.announcement.author!.profileImage! == null) {
+          this.imgUrl = "assets/default-user-image.png"
+        }
+
         this.averageRating = this.announcementService.countAverageRating(this.announcement);
         this.email = 'mailto:' + this.announcement.author!.email;
-        this.ifTags = !(this.announcement.tags?.length === 0);
+        // this.ifTags = !(this.announcement.tags[0] == '');
+        this.announcement.tags?.forEach(x => this.ifTags = !(x == ''))
+        console.log(this.announcement.tags?.length )
         this.ifComments = !(this.announcement.comments?.length === 0);
         } 
       }
