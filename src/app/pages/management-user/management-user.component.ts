@@ -10,6 +10,7 @@ import { AnnouncementService } from 'src/app/services/announcement.service';
 import { Announcement } from 'src/app/models/announcement';
 import { EditAnnouncementDialogComponent } from 'src/app/components/edit-announcement-dialog/edit-announcement-dialog.component';
 import { AlertDialogComponent } from 'src/app/components/alert-dialog/alert-dialog.component';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-management-user',
@@ -28,7 +29,8 @@ export class ManagementUserComponent {
   announcements: Announcement[] | undefined;
   
   
-  constructor(private router: Router, private route: ActivatedRoute, private announcementService: AnnouncementService, private domSanitizer: DomSanitizer, private userService: UserService, public dialog: MatDialog) {}
+  constructor(private router: Router, private route: ActivatedRoute, private announcementService: AnnouncementService, private domSanitizer: DomSanitizer, private userService: UserService,
+     public dialog: MatDialog, private commentService: CommentService) {}
   
   ngOnInit() {
     this.getUserData();
@@ -64,6 +66,7 @@ export class ManagementUserComponent {
   }
 
   deleteAnnouncement(id: number) {
+    this.commentService.deleteComments(id).subscribe();
     this.announcementService.deleteAnnoucement(id).subscribe( x => {
       if( x !== null){
         window.location.reload();
