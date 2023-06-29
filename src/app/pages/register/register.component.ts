@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { userRegister } from 'src/app/models/userRegister';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { AlertDialogComponent } from 'src/app/components/alert-dialog/alert-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +13,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   user = new userRegister();
   error: string[] = ['', '', '', '', ''];
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, public dialog: MatDialog) {}
 
   register(user: userRegister): void {
     console.log(user);
@@ -19,7 +21,7 @@ export class RegisterComponent {
     this.authService.register(user).subscribe(
       {
         next: () => {
-            this.router.navigate(['/main']);
+          this.confirmRegister()
         },
         error: (err) => {
           if (err.error == 'User with this username is exist') {
@@ -28,6 +30,18 @@ export class RegisterComponent {
           console.log(err.error);
         }
       });
+  }
+
+  confirmRegister() {
+    let dialogRef = this.dialog.open(AlertDialogComponent, {
+      height: '200px',
+      width: '400px',
+      data: {message: 'Zostałeś pomyślnie zarejestrowany', type: 'simple'} 
+    });
+    dialogRef.afterClosed().subscribe(x =>{ 
+        localStorage.clear();
+        this.router.navigate(['/main']).then(() => window.location.reload());
+    })
   }
 
   validation(user: userRegister) {

@@ -16,7 +16,7 @@
             <h4><a [href]="email">{{announcement.author!.email}}</a></h4>
         </div>
     </div>
-    <div class="modal">
+    <div *ngIf="ifTags" class="modal">
         <h4>Tags:</h4>
         <div class="tags">
             <div class="tagContainer" *ngFor="let tag of announcement.tags">
@@ -29,10 +29,13 @@
             <h3>Comments:</h3>
             <h3 class="rating">{{averageRating}}/5</h3>
         </div>
+        <div *ngIf="!ifComments">
+            <h4>No commments to display</h4>
+        </div>
         <div *ngFor="let comment of announcement.comments">
             <app-comment [comment]="comment"></app-comment>
         </div>
-        <button (click)="openDialog()" style="margin-top: 20px;">Add Comment</button>
+        <button *ngIf="ifUser" (click)="openDialog()" style="margin-top: 20px;">Add Comment</button>
     </div>
 </div>
 
