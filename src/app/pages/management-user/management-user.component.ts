@@ -150,7 +150,7 @@ export class ManagementUserComponent {
     this.userService.updateUser(this.user).subscribe(
       updatedUser => {
         console.log('UDAŁO SIĘ ZAKTUALIZOWAĆ?');
-        // Przeładowanie obrazka dla profilowego
+        window.location.reload();
       },
       error => {
         console.error('NIE UDAŁO SIĘ ZAKTUALIZOWAĆ :(');
