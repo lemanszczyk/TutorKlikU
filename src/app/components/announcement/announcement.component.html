@@ -4,7 +4,7 @@
     <div class="item2"><a class="link"
             [routerLink]="['/announcement', announcement.annoucementId]">{{announcement.annoucementName}}</a></div>
     <div class="item3">{{announcement.annoucementDescription}}</div>
-    <div class="item4" *ngIf="announcement.comments">Średnia ocen: {{calculateAverageRating(announcement.comments)}}
+    <div class="item4" *ngIf="announcement.comments">Średnia ocen: {{calculateAverageRating(announcement.comments) | number:'1.2-2'}}
     </div>
     <div class="item5" *ngIf="announcement.comments">Liczba komentarzy: {{announcement.comments.length}}</div>
     <div style="display: inline-flex;" class="item6">

@@ -14,6 +14,9 @@ import { SuperHeroService } from 'src/app/services/super-hero.service';
 
 export class LoginComponent {
   user = new User();
+  errorLogin: string = '';
+  errorPass: string = '';
+  error: string = '';
   constructor(private authService: AuthService, private router: Router) {}
 
   login(user: User) {
@@ -23,6 +26,29 @@ export class LoginComponent {
         this.router.navigate(['/main']).then(() => window.location.reload());
       },
       error: (err: any) => {
+        let arrayData: any;
+
+        try {
+          arrayData = JSON.parse(err.error);
+        } catch (jsonError) {
+          console.error('NOT Json');
+        }
+
+        this.errorPass = '';
+        this.errorLogin = '';
+        this.error = '';
+
+        if (arrayData == undefined) {
+          arrayData = 'test';
+          this.error = err.error;
+        }
+        if (arrayData.errors && arrayData.errors.Password && arrayData.errors.Password[0]) {
+          this.errorPass = arrayData.errors.Password[0];
+        }
+        if (arrayData.errors && arrayData.errors.UserName && arrayData.errors.UserName[0]) {
+          this.errorLogin = arrayData.errors.UserName[0];
+        }
+
         console.log(err.error);
       }
     });

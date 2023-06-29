@@ -5,12 +5,15 @@
     <mat-form-field>
       <mat-label>Username</mat-label>
       <input [(ngModel)]="user.userName" matInput>
+      <mat-label class = "label-error" [ngStyle]="{ 'display': errorLogin ? 'display' : 'inline' }">{{errorLogin}}</mat-label>
     </mat-form-field>
     <h4>Password:</h4>
     <mat-form-field>
       <mat-label>Password</mat-label>
       <input type="password" [(ngModel)]="user.password" matInput>
+      <mat-label class = "label-error" [ngStyle]="{ 'display': errorPass ? 'display' : 'inline' }">{{errorPass}}</mat-label>
     </mat-form-field>
+    <mat-label class = "label-error" [ngStyle]="{ 'display': error ? 'display' : 'inline' }">{{error}}</mat-label>
     <button (click)="login(user)">Login</button>
   </div>
 </div>

@@ -144,11 +144,6 @@ export class ManagementUserComponent {
     if ( choice != ('typ' || 'nazwa')){
       this.userUpdate()
     }
-
-    // Przeładowanie obrazka dla profilowego
-    if (choice == 'obraz' && temp != '' && temp != 'Błąd') {
-      window.location.reload();
-    }
   }
 
   userUpdate() {

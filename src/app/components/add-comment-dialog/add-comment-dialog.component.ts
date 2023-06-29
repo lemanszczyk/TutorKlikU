@@ -28,10 +28,11 @@ export class AddCommentDialogComponent {
 
   AddComment(): void {
     console.log(this.comment.description);
+    this.validate();
     this.comment.rate = this.rating;
     this.comment.announcementId = this.data.announcementId;
     this.commentService.addComment(this.comment).subscribe( x => {
-      if( x !== null){
+      if( x !== null && this.error == '') {
         this.dialogRef.close();
         window.location.reload();
       }

@@ -8,3 +8,8 @@
 button {
     margin-right: auto;
 }
+
+.label-error {
+    padding-left: 10px;
+    color: red;
+}
