@@ -86,7 +86,7 @@ export class ManagementUserComponent {
           this.nameError = '';
           console.log('Wprowadzona nazwa:', this.user.userName);
         } else {
-          this.nameError = '*Nazwa użytkownika to imię i nazwisko, np. Jan Kowalski'
+          this.nameError = '*Correct name is in example Jan Kowalski'
         }
         
         break;
@@ -100,7 +100,7 @@ export class ManagementUserComponent {
           this.mailError = '';
           console.log('Wprowadzony e-mail:', this.user.email);
         } else {
-          this.mailError = "*Błędny format e-maila! Poprawny przykładowy adres: e-mail@poczta-polska.ru";
+          this.mailError = "*Wrong e-mail format! Example of correct address: e-mail@poczta-polska.ru";
         }
         console.log('Wprowadzony mail:', this.user.email);
         break;
@@ -112,7 +112,7 @@ export class ManagementUserComponent {
           this.typeError = '';
           console.log('Wprowadzony typ:', this.user.userType);
         } else {
-          this.typeError = "*Musisz wybrać wartość!";
+          this.typeError = "*You have to choose one!";
         }
         break;
 
@@ -123,9 +123,9 @@ export class ManagementUserComponent {
           this.imageError = '';
           console.log("Obraz wprowadzony");
         } else if (temp == '') {
-          this.imageError = "*Musisz wybrać obraz";
+          this.imageError = "*You need to choose image";
         } else {
-          this.imageError = "*Obraz może mieć rozmiar maksymalnie 1 MB";
+          this.imageError = "*Max size of 1MB";
         }
         break;
 
@@ -138,16 +138,15 @@ export class ManagementUserComponent {
     this.userService.updateUser(this.user).subscribe(
       updatedUser => {
         console.log('UDAŁO SIĘ ZAKTUALIZOWAĆ?');
+        // Przeładowanie obrazka dla profilowego
+        if (choice == 'obraz' && temp != '' && temp != 'Błąd') {
+          window.location.reload();
+        }
       },
       error => {
         console.error('NIE UDAŁO SIĘ ZAKTUALIZOWAĆ :(');
       }
     );
-
-    // Przeładowanie obrazka dla profilowego
-    if (choice == 'obraz' && temp != '' && temp != 'Błąd') {
-      window.location.reload();
-    }
   }
 
   updatePassword() {

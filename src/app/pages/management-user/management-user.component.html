@@ -5,10 +5,10 @@
     <p class="itemnext">Role: {{user.userType}}</p>
 </div>
 
-<div class="modal">
+<div *ngIf="announcements && announcements.length > 0" class="modal">
     <h2>User announcements:</h2>
     <div *ngFor="let ann of announcements" class="announcemenntContainer">
-        <a class="link" [routerLink]="['/announcement', ann.annoucementId]">{{ann.annoucementName}}</a>
+        <a style = "width: 200px;" class="link" [routerLink]="['/announcement', ann.annoucementId]">{{ann.annoucementName}}</a>
         <button (click)="editAnnouncement(ann.annoucementId!)">Edit</button>
         <button (click)="deleteAnnouncement(ann.annoucementId!)">Delete</button>
     </div>
