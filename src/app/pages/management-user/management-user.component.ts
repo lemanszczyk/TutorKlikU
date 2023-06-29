@@ -162,7 +162,7 @@ export class ManagementUserComponent {
     let dialogRef = this.dialog.open(AlertDialogComponent, {
       height: '200px',
       width: '400px',
-      data:  'Po wybraniu tej akcji zostaniesz wylogowany, czy jesteś pewny?'
+      data: {message: 'Po wybraniu tej akcji zostaniesz wylogowany, czy jesteś pewny?'} 
     });
     dialogRef.afterClosed().subscribe(x =>{
       if (x.event == 'Cancel'){

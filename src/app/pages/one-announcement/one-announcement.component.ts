@@ -17,6 +17,9 @@ export class OneAnnouncementComponent {
   imgUrl: SafeUrl | undefined;
   averageRating: number = 0;
   email: string = '';
+  ifUser = !(localStorage.length === 0);
+  ifTags: boolean = false;
+  ifComments: boolean = false;
 
   constructor(private route: ActivatedRoute, private announcementService: AnnouncementService, private domSanitizer: DomSanitizer, public dialog: MatDialog) {}
   ngOnInit() {
@@ -34,6 +37,8 @@ export class OneAnnouncementComponent {
         this.imgUrl = this.domSanitizer.bypassSecurityTrustUrl(this.announcement.author!.profileImage!);
         this.averageRating = this.announcementService.countAverageRating(this.announcement);
         this.email = 'mailto:' + this.announcement.author!.email;
+        this.ifTags = !(this.announcement.tags?.length === 0);
+        this.ifComments = !(this.announcement.comments?.length === 0);
         } 
       }
     )}

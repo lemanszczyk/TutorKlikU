@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>{{alert}}</h1>
 <div style="margin-left: 20px;" mat-dialog-actions>
-    <button (click)="onNoClick()">Cancel</button>
+    <button *ngIf="!(type == 'simple')" (click)="onNoClick()">Cancel</button>
     <button (click)="submit()" cdkFocusInitial>Submit</button>
   </div>
