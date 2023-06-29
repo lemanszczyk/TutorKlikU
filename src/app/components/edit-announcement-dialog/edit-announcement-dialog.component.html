@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Add announcement</h1>
+<div mat-dialog-content>
+    <mat-form-field class = "titleInput">
+        <mat-label>Write title here...</mat-label>
+        <input class = "titleInput" type="text" matInput [(ngModel)]="announcement.annoucementName">
+    </mat-form-field>
+
+    <mat-form-field class="inputAnnouncement">
+        <mat-label>Write announcement description here...</mat-label>
+        <textarea class="inputAnnouncement" matInput [(ngModel)]="announcement.annoucementDescription"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class = "titleInput">
+        <mat-label>Write optional tags here...(write each tag after ",")</mat-label>
+        <input class = "titleInput" type="text" matInput [(ngModel)]="tags">
+    </mat-form-field>
+</div>
+
+<div style="margin-left: 20px;" mat-dialog-actions>
+    <button (click)="onNoClick()">Cancel</button>
+    <button (click)="EditAnnoucement()" cdkFocusInitial>Submit</button>
+    <label class = "label-error" [ngStyle]="{ 'display': emptyFieldError ? 'display' : 'inline' }">{{emptyFieldError}}</label>
+</div>

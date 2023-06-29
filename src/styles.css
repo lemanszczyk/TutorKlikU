@@ -27,3 +27,12 @@ body {
     width: 90px;
     height: 90px;
 }
+
+.link {
+    text-decoration: none; 
+    color: inherit;
+	cursor: pointer;
+}
+.link:hover {
+    text-shadow: 1px 1px 1px black;
+}

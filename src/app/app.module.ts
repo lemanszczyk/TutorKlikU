@@ -17,6 +17,7 @@ import { CommentComponent } from './components/comment/comment.component';
 import { AddCommentDialogComponent } from './components/add-comment-dialog/add-comment-dialog.component'
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddAnnouncementDialogComponent } from './components/add-announcement-dialog/add-announcement-dialog.component';
+import { EditAnnouncementDialogComponent } from './components/edit-announcement-dialog/edit-announcement-dialog.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AddAnnouncementDialogComponent } from './components/add-announcement-di
     ManagementUserComponent,
     CommentComponent,
     AddCommentDialogComponent,
-    AddAnnouncementDialogComponent
+    AddAnnouncementDialogComponent,
+    EditAnnouncementDialogComponent
   ],
   imports: [
     BrowserModule,

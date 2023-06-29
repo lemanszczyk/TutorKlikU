@@ -12,6 +12,9 @@ export class AnnouncementService {
   private urlGetAnnouncements = 'Announcement/GetAnnouncements';
   private urlGetAnnouncement = 'Announcement/GetAnnouncement';
   private urlAddAnnouncement = 'Announcement/AddAnnouncement';
+  private urlGetUserAnnouncement = 'Announcement/GetUserAnnouncements';
+  private urlEditAnnouncement = 'Announcement/EditAnnouncement';
+  private urlDeleteAnnouncement = 'Announcement/DeleteAnnouncement';
   
   constructor(private http: HttpClient) { }
   
@@ -38,7 +41,19 @@ export class AnnouncementService {
   }
 
   public addAnnoucement(announcement: Announcement): Observable<Announcement> {
-    console.log(announcement)
     return this.http.post<Announcement>(`${environment.apiUrl}/${this.urlAddAnnouncement}`, announcement);
+  }
+
+  public getUserAnnouncements(): Observable<Announcement[]> {
+    return this.http.get<Announcement[]>(`${environment.apiUrl}/${this.urlGetUserAnnouncement}`);
+  }
+
+  public editAnnoucement(announcement: Announcement): Observable<Announcement> {
+    return this.http.post<Announcement>(`${environment.apiUrl}/${this.urlEditAnnouncement}`, announcement);
+  }
+
+  public deleteAnnoucement(id: number): Observable<string> {
+    const url = `${this.urlDeleteAnnouncement}/?id=${id}`;
+    return this.http.delete<string>(`${environment.apiUrl}/${url}`);
   }
 }

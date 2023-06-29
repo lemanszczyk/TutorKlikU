@@ -2,7 +2,16 @@
     <div class="item1" style="align-items: center;"><img class="border" *ngIf="imgUrl" [src] = "imgUrl"> <img class="border" *ngIf="!imgUrl" src="assets/default-user-image.png"></div>
     <p class="itemnext">User's name: {{user.userName}}</p>
     <p class="itemnext">E-mail address: {{user.email}}</p>
-    <p class="itemnext">{{user.userType}}</p>
+    <p class="itemnext">Role: {{user.userType}}</p>
+</div>
+
+<div class="modal">
+    <h2>User announcements:</h2>
+    <div *ngFor="let ann of announcements" class="announcemenntContainer">
+        <a class="link" [routerLink]="['/announcement', ann.annoucementId]">{{ann.annoucementName}}</a>
+        <button (click)="editAnnouncement(ann.annoucementId!)">Edit</button>
+        <button (click)="deleteAnnouncement(ann.annoucementId!)">Delete</button>
+    </div>
 </div>
 
 <div class = "container">

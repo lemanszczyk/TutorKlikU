@@ -6,6 +6,9 @@ import { UserService } from 'src/app/services/user.service';
 import { UserPassword } from 'src/app/models/userPassword';
 import { AddAnnouncementDialogComponent } from 'src/app/components/add-announcement-dialog/add-announcement-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AnnouncementService } from 'src/app/services/announcement.service';
+import { Announcement } from 'src/app/models/announcement';
+import { EditAnnouncementDialogComponent } from 'src/app/components/edit-announcement-dialog/edit-announcement-dialog.component';
 
 @Component({
   selector: 'app-management-user',
@@ -21,12 +24,20 @@ export class ManagementUserComponent {
   type: string = ''; typeError: string = '';
   image: string = ''; imageError: string = '';
   password: string = ''; password2: string = ''; passwordError: string = '';
+  announcements: Announcement[] | undefined;
   
-  constructor(private route: ActivatedRoute, private domSanitizer: DomSanitizer, private userService: UserService, public dialog: MatDialog) {}
+  
+  constructor(private route: ActivatedRoute, private announcementService: AnnouncementService, private domSanitizer: DomSanitizer, private userService: UserService, public dialog: MatDialog) {}
   
   ngOnInit() {
     this.getUserData();
     // this.getUserPassword();
+    this.getUserAnnouncement();
+  }
+
+  getUserAnnouncement() {
+    this.announcementService.getUserAnnouncements()
+    .subscribe((result: Announcement[]) => (this.announcements = result));
   }
 
   getUserData() {
@@ -36,6 +47,22 @@ export class ManagementUserComponent {
         if (this.user.profileImage) {
           this.imgUrl = this.domSanitizer.bypassSecurityTrustUrl(this.user.profileImage) as SafeUrl;
         }
+      }
+    })
+  }
+
+  editAnnouncement(id: number) {
+    let dialogRef = this.dialog.open(EditAnnouncementDialogComponent, {
+      height: '550px',
+      width: '600px',
+      data:  {announcement: this.announcements?.find(x => x.annoucementId == id)}
+    });
+  }
+
+  deleteAnnouncement(id: number) {
+    this.announcementService.deleteAnnoucement(id).subscribe( x => {
+      if( x !== null){
+        window.location.reload();
       }
     })
   }
