@@ -5,21 +5,25 @@
         <mat-form-field>
             <mat-label>Username</mat-label>
             <input [(ngModel)]="user.userName" matInput>
+            <mat-label class = "label-error" [ngStyle]="{ 'display': error[0] ? 'display' : 'inline' }">{{error[0]}}</mat-label>
         </mat-form-field>
         <h4>Email:</h4>
         <mat-form-field>
             <mat-label>Email</mat-label>
             <input [(ngModel)]="user.email" matInput>
+            <mat-label class = "label-error" [ngStyle]="{ 'display': error[1] ? 'display' : 'inline' }">{{error[1]}}</mat-label>
         </mat-form-field>
         <h4>Password:</h4>
         <mat-form-field>
             <mat-label>Password</mat-label>
             <input type="password" [(ngModel)]="user.password" matInput>
+            <mat-label class = "label-error" [ngStyle]="{ 'display': error[2] ? 'display' : 'inline' }">{{error[2]}}</mat-label>
         </mat-form-field>
         <h4>Repeat Password:</h4>
         <mat-form-field>
             <mat-label>Repeat Password</mat-label>
             <input type="password" [(ngModel)]="user.confirmPassword" matInput>
+            <mat-label class = "label-error" [ngStyle]="{ 'display': error[3] ? 'display' : 'inline' }">{{error[3]}}</mat-label>
         </mat-form-field>
         <h4>I am a:</h4>
         <mat-form-field>
@@ -28,6 +32,7 @@
                 <mat-option [value]="'Tutor'">Tutor</mat-option>
                 <mat-option [value]="'Student'">Student</mat-option>
             </mat-select>
+            <mat-label class = "label-error" [ngStyle]="{ 'display': error[4] ? 'display' : 'inline' }">{{error[4]}}</mat-label>
         </mat-form-field>
         <button (click)="register(user)">Register</button>
     </div>

@@ -8,7 +8,7 @@
 <div *ngIf="announcements" class="modal">
     <h2>User announcements:</h2>
     <div *ngFor="let ann of announcements" class="announcemenntContainer">
-        <a class="link" [routerLink]="['/announcement', ann.annoucementId]">{{ann.annoucementName}}</a>
+        <a style = "width: 200px;" class="link" [routerLink]="['/announcement', ann.annoucementId]">{{ann.annoucementName}}</a>
         <button (click)="editAnnouncement(ann.annoucementId!)">Edit</button>
         <button (click)="deleteAnnouncement(ann.annoucementId!)">Delete</button>
     </div>
