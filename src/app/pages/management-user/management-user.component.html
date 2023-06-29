@@ -5,7 +5,7 @@
     <p class="itemnext">Role: {{user.userType}}</p>
 </div>
 
-<div *ngIf="announcements" class="modal">
+<div *ngIf="announcements && announcements.length > 0" class="modal">
     <h2>User announcements:</h2>
     <div *ngFor="let ann of announcements" class="announcemenntContainer">
         <a style = "width: 200px;" class="link" [routerLink]="['/announcement', ann.annoucementId]">{{ann.annoucementName}}</a>

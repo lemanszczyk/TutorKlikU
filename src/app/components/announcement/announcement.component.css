@@ -44,10 +44,6 @@
     text-overflow: '...';
 }
 
-.item6 {
-    grid-column: 3 / span 2 ;
-}
-
 .tagContainer {
     background-color: rgba(211, 208, 208, 0.5);
     border-radius: 15px;
