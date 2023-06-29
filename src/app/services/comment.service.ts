@@ -15,6 +15,7 @@ export class CommentService {
 
   private urlGetAnnouncement = 'Announcement/GetAnnouncement';
   private urlAddComment = 'Comment/AddComment';
+  private urlDeleteComments = 'Comment/DeleteComments';
   
   public getCommentsForAnnouncement(id: number): Observable<AppComment[]> { 
     const url = `${this.urlGetAnnouncement}/?id=${id}`;
@@ -25,5 +26,10 @@ export class CommentService {
 
   public addComment(comment: AppComment): Observable<AppComment> {
     return this.http.post<AppComment>(`${environment.apiUrl}/${this.urlAddComment}`, comment);
+  }
+
+  public deleteComments(id: number): Observable<string> {
+    const url = `${this.urlDeleteComments}/?id=${id}`;
+    return this.http.delete<string>(`${environment.apiUrl}/${url}`);
   }
 }
