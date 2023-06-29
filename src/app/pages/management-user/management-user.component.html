@@ -34,7 +34,7 @@
         <label class = "label-error" [ngStyle]="{ 'display': passwordError ? 'display' : 'inline' }">{{passwordError}}</label>
     </div>
 
-    <button class = "item button-1" (click)="updateUser(type, 'typ'); type = ''">UPDATE TYPE</button>
+    <!-- <button class = "item button-1" (click)="updateUser(type, 'typ'); type = ''">UPDATE TYPE</button>
     <div class = "item item-right">
         <label>I am: </label>
         <input type="radio" name="type" value="Tutor" [(ngModel)]="type" />
@@ -43,7 +43,7 @@
         <input type="radio" name="type" value="Student" [(ngModel)]="type" />
         <label for="Uczniem">Student</label>
         <label class = "label-error" [ngStyle]="{ 'display': typeError ? 'display' : 'inline' }">{{typeError}}</label>
-    </div>
+    </div> -->
 
     <button class = "item button-1" (click)="updateUser(image, 'obraz')">UPDATE IMAGE</button>
     <div class = "item item-right">

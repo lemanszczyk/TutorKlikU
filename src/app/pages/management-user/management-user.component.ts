@@ -111,16 +111,16 @@ export class ManagementUserComponent {
         break;
 
       // Typ musi być wybrany
-      case 'typ':
-        if (temp != '') {
-          this.user.userType = temp;
-          this.typeError = '';
-          console.log('Wprowadzony typ:', this.user.userType);
-          this.confirm();
-        } else {
-          this.typeError = "*You have to choose one!";
-        }
-        break;
+      // case 'typ':
+      //   if (temp != '') {
+      //     this.user.userType = temp;
+      //     this.typeError = '';
+      //     console.log('Wprowadzony typ:', this.user.userType);
+      //     this.confirm();
+      //   } else {
+      //     this.typeError = "*You have to choose one!";
+      //   }
+      //   break;
 
       // Obraz o rozmiarze maksymalnie ~1 MB
       case 'obraz':
@@ -156,9 +156,6 @@ export class ManagementUserComponent {
       updatedUser => {
         console.log('UDAŁO SIĘ ZAKTUALIZOWAĆ?');
         // Przeładowanie obrazka dla profilowego
-        if (choice == 'obraz' && temp != '' && temp != 'Błąd') {
-          window.location.reload();
-        }
       },
       error => {
         console.error('NIE UDAŁO SIĘ ZAKTUALIZOWAĆ :(');
