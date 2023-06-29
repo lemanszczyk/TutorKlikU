@@ -11,6 +11,7 @@
   <mat-form-field class="inputComment">
     <mat-label>Write comment here...</mat-label>
     <textarea class="inputComment" matInput [(ngModel)]="comment.description"></textarea>
+    <mat-label class = "label-error" [ngStyle]="{ 'display': error ? 'display' : 'inline' }">{{error}}</mat-label>
   </mat-form-field>
 </div>
 
