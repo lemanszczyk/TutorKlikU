@@ -14,6 +14,7 @@ export class AddCommentDialogComponent {
   comment = new Comment();
   public stars: boolean[] = Array(5).fill(false);
   rating: number = 1;
+  error: string = '';
 
   constructor(private commentService: CommentService, public dialogRef: MatDialogRef<AddCommentDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
   
@@ -36,6 +37,12 @@ export class AddCommentDialogComponent {
       }
     });
 
+  }
+
+  validate(): void {
+    if (this.comment.description == '') {
+      this.error = "*Empty comment";
+    }
   }
 
   public rate(rating: number) {
